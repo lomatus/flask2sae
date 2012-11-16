@@ -2,6 +2,10 @@
 
 This an big application development starter structure for SAE(sina app engine by sina.com)
 
+LICENSE
+
+BSD like
+
 -Local Development Requirements
 
 flask             |   	0.7.2
