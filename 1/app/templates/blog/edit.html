@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% if session.logged_in %}
+    <form action="/edit/{{entry.id}}" method=post class=update-entry>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=title value='{{ entry.title }}' >
+        <dt>Text:
+        <dt><textarea id='input' name=text rows=5 cols=40 > {{ entry.text }}</textarea>
+<script type="text/javascript">
+new TINY.editor.edit('editor',{
+  id:'input',
+  width:850,
+  height:500,
+  cssclass:'te',
+  controlclass:'tecontrol',
+  rowclass:'teheader',
+  dividerclass:'tedivider',
+  controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',
+        'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','n',
+        'font','size','style','|','image','hr','link','unlink','|','cut','copy','paste','print'],
+  footer:true,
+  fonts:['Verdana','Arial','Georgia','Trebuchet MS'],
+  xhtml:true,
+  cssfile:'{{ url_for("static", filename="tinyeditor/style.css" ) }}',
+  bodyid:'editor',
+  footerclass:'tefooter',
+  toggle:{text:'source',activetext:'wysiwyg',cssclass:'toggle'},
+  resize:{cssclass:'resize'}
+});
+</script>
+        <dt><input type=submit onclick='editor.post()' value=Update>
+      </dl>
+    </form>
+ {% endif %}
+
+{% endblock %}

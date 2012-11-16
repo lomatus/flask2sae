@@ -1,0 +1,41 @@
+-README
+
+This an big application development starter structure for SAE(sina app engine by sina.com)
+
+-Local Development Requirements
+
+flask             |   	0.7.2
+werkzeug	      |     0.7.1
+jinja2	          |     2.6
+flask-sqlalchemy  |	    0.15
+sqlalchemy        |     0.7.3   
+
+
+-Pruduction Requirements
+
+Sina SAE  current version (Since Nov 16 2012)
+
+
+-Start to use this:
+
+--Locale
+Shell:
+Python shell.py
+>>from app import db
+>>db.create_all()
+>>exit()
+Python runapp.py - run in debug model visit:http://localhost:8888/
+
+--SAE
+svn ci -m "wowa"
+
+-Locale Development
+
+-Models,Views
+app/yourapp
+app/yourapp/models.py
+app/yourapp/views.py
+
+-Templates
+app/template/yourapp
+app/template/yourapp/layout.html

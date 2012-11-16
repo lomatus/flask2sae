@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=title>
+        <dt>Text:
+        <dt><textarea id='input' name=text rows=5 cols=40 ></textarea>
+<script type="text/javascript">
+new TINY.editor.edit('editor',{
+  id:'input',
+  width:850,
+  height:500,
+  cssclass:'te',
+  controlclass:'tecontrol',
+  rowclass:'teheader',
+  dividerclass:'tedivider',
+  controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',
+        'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','n',
+        'font','size','style','|','image','hr','link','unlink','|','cut','copy','paste','print'],
+  footer:true,
+  fonts:['Verdana','Arial','Georgia','Trebuchet MS'],
+  xhtml:true,
+  cssfile:'static/tinyeditor/style.css',
+  bodyid:'editor',
+  footerclass:'tefooter',
+  toggle:{text:'源码',activetext:'可视化',cssclass:'toggle'},
+  resize:{cssclass:'resize'}
+});
+</script>
+        <dt><input type=submit onclick='editor.post()' value=Share>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.title }}</h2>
+      {% if session.logged_in %}
+        <em class='admin-mess'> Welcome,Admin. You can <a href= "delete/{{ entry.id }}" > Delete</a> | <a href= "edit/{{ entry.id }}" > Edit</a> this entry </em>
+        <br />
+      {% endif %}
+      {{ entry.text|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
