@@ -145,7 +145,14 @@ var
 sdist
 develop-eggs
 .installed.cfg
+
+######################
+## Version control  ##
+######################
 .svn
+.gitattributes
+.gitignore
+
 
 # Installer logs
 pip-log.txt
