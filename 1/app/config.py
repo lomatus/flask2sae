@@ -6,6 +6,7 @@ class Config(object):
     USERNAME = 'admin'
     PASSWORD = 'flask2sae'
     SECRET_KEY= 'flask2sae secret key'
+    SQLALCHEMY_POOL_RECYCLE = 5 #Solove MySQL has gone away,Sae 30s close connection. set to 5s reconnect.
     THREADS_PER_PAGE = 8
 
 class ProductionConfig(Config):
